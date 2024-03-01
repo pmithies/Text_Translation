@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Text Translator</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+<body>
+    <div class="container">
+        <h1>Text Translator</h1>
+        <form method="post" action="{{ url_for('main') }}">
+            <label for="text_input">Enter text to translate:</label>
+            <textarea id="text_input" name="text_input" rows="4" cols="50">Hi, how are you?</textarea><br>
+
+            <label for="dest_lang">Select destination language:</label>
+            <select id="dest_lang" name="dest_lang">
+                <option value="Hindi">Hindi</option>
+                <option value="Malayalam">Malayalam</option>
+                <option value="Kannada">Kannada</option>
+                <option value="Tamil">Tamil</option>
+            </select><br>
+
+            <input type="submit" value="Translate">
+        </form>
+
+        {% if translated_text %}
+            <p class="result">Translated Text: {{ translated_text }}</p>
+        {% endif %}
+    </div>
+</body>
+</html>
